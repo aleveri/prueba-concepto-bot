@@ -28,7 +28,7 @@ namespace Microsoft.BotBuilderSamples
         public const string HelpIntent = "Help";
         public const string NoneIntent = "None";
 
-        private bool IsFirstMessage = true;
+        private bool _isFirstMessage = true;
 
         /// <summary>
         /// Key in the bot config (.bot file) for the LUIS instance.
@@ -129,7 +129,7 @@ namespace Microsoft.BotBuilderSamples
                                     var welcomeCard = CreateAdaptiveCardAttachment();
                                     var response = CreateResponse(activity, welcomeCard);
                                     await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
-                                    //await dc.Context.SendActivityAsync("I didn't understand what you just said to me.");
+                                    // await dc.Context.SendActivityAsync("I didn't understand what you just said to me.");
                                     break;
                             }
 
@@ -153,10 +153,10 @@ namespace Microsoft.BotBuilderSamples
             {
                 if (activity.MembersAdded.Any())
                 {
-                    if (IsFirstMessage)
+                    if (_isFirstMessage)
                     {
                         await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
-                        IsFirstMessage = false;
+                        _isFirstMessage = false;
                     }
                 }
             }
