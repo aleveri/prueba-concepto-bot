@@ -4,6 +4,11 @@
   "version": "1.0",
   "body": [
     {
+      "type": "TextBlock",
+      "text": "Por favor, valida tu token de identificacion:",
+      "wrap": true
+    },
+    {
       "type": "Input.Text",
       "placeholder": "Token de identificación",
       "style": "password",

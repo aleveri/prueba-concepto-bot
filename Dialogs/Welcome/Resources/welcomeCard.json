@@ -1,23 +1,28 @@
-{
-  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-  "type": "AdaptiveCard",
-  "version": "1.0",
-  "body": [
+{  
+   "$schema":"http://adaptivecards.io/schemas/adaptive-card.json",
+   "type":"AdaptiveCard",
+   "version":"1.0",
+   "body":[  
+      {  
+         "type":"TextBlock",
+         "text":"Por favor, valida tu token de identificacion:",
+         "wrap":true
+      },
     {
       "type": "Input.Text",
-      "placeholder": "Token de identificacion",
+      "placeholder": "Token de identificación",
       "style": "password",
       "maxLength": 0,
       "id": "Token"
     }
-  ],
-  "actions": [
-    {
-      "type": "Action.Submit",
-      "title": "Validar",
-      "data": {
-        "id": "Token"
+   ],
+   "actions":[  
+      {  
+         "type":"Action.Submit",
+         "title":"Validar",
+         "data":{  
+            "id":"Token"
+         }
       }
-    }
-  ]
+   ]
 }
