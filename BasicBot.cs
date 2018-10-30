@@ -27,8 +27,7 @@ namespace Microsoft.BotBuilderSamples
         public const string CancelIntent = "Cancel";
         public const string HelpIntent = "Help";
         public const string NoneIntent = "None";
-
-        private bool _isFirstMessage = true;
+        public const string Prueba = "Prueba";
 
         /// <summary>
         /// Key in the bot config (.bot file) for the LUIS instance.

@@ -52,7 +52,9 @@ namespace Microsoft.BotBuilderSamples
             {
                     InitializeStateStepAsync,
                     PromptForNameStepAsync,
-                    PromptForCityStepAsync,
+
+                    // PromptForCityStepAsync,
+
                     DisplayGreetingStateStepAsync,
             };
             AddDialog(new WaterfallDialog(ProfileDialog, waterfallSteps));
@@ -101,7 +103,7 @@ namespace Microsoft.BotBuilderSamples
                     Prompt = new Activity
                     {
                         Type = ActivityTypes.Message,
-                        Text = "What is your name?",
+                        Text = "Hola, en que te puedo ayudar ?",
                     },
                 };
                 return await stepContext.PromptAsync(NamePrompt, opts);
@@ -112,37 +114,37 @@ namespace Microsoft.BotBuilderSamples
             }
         }
 
-        private async Task<DialogTurnResult> PromptForCityStepAsync(
-                                                        WaterfallStepContext stepContext,
-                                                        CancellationToken cancellationToken)
-        {
-            // Save name, if prompted.
-            var greetingState = await UserProfileAccessor.GetAsync(stepContext.Context);
-            var lowerCaseName = stepContext.Result as string;
-            if (string.IsNullOrWhiteSpace(greetingState.Name) && lowerCaseName != null)
-            {
-                // Capitalize and set name.
-                greetingState.Name = char.ToUpper(lowerCaseName[0]) + lowerCaseName.Substring(1);
-                await UserProfileAccessor.SetAsync(stepContext.Context, greetingState);
-            }
+        //private async Task<DialogTurnResult> PromptForCityStepAsync(
+        //                                                WaterfallStepContext stepContext,
+        //                                                CancellationToken cancellationToken)
+        //{
+        //    // Save name, if prompted.
+        //    var greetingState = await UserProfileAccessor.GetAsync(stepContext.Context);
+        //    var lowerCaseName = stepContext.Result as string;
+        //    if (string.IsNullOrWhiteSpace(greetingState.Name) && lowerCaseName != null)
+        //    {
+        //        // Capitalize and set name.
+        //        greetingState.Name = char.ToUpper(lowerCaseName[0]) + lowerCaseName.Substring(1);
+        //        await UserProfileAccessor.SetAsync(stepContext.Context, greetingState);
+        //    }
 
-            if (string.IsNullOrWhiteSpace(greetingState.City))
-            {
-                var opts = new PromptOptions
-                {
-                    Prompt = new Activity
-                    {
-                        Type = ActivityTypes.Message,
-                        Text = $"Hello {greetingState.Name}, what city do you live in?",
-                    },
-                };
-                return await stepContext.PromptAsync(CityPrompt, opts);
-            }
-            else
-            {
-                return await stepContext.NextAsync();
-            }
-        }
+        //    if (string.IsNullOrWhiteSpace(greetingState.City))
+        //    {
+        //        var opts = new PromptOptions
+        //        {
+        //            Prompt = new Activity
+        //            {
+        //                Type = ActivityTypes.Message,
+        //                Text = $"Hello {greetingState.Name}, what city do you live in?",
+        //            },
+        //        };
+        //        return await stepContext.PromptAsync(CityPrompt, opts);
+        //    }
+        //    else
+        //    {
+        //        return await stepContext.NextAsync();
+        //    }
+        //}
 
         private async Task<DialogTurnResult> DisplayGreetingStateStepAsync(
                                                     WaterfallStepContext stepContext,
