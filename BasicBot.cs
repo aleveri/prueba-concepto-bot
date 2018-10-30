@@ -153,11 +153,11 @@ namespace Microsoft.BotBuilderSamples
             {
                 if (activity.MembersAdded.Any())
                 {
-                    if (_isFirstMessage)
-                    {
-                        _isFirstMessage = false;
-                        await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
-                    }
+                    //if (_isFirstMessage)
+                    //{
+                    //    _isFirstMessage = false;
+                    //    await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
+                    //}
                 }
             }
 
