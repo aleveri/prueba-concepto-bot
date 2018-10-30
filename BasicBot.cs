@@ -28,6 +28,8 @@ namespace Microsoft.BotBuilderSamples
         public const string HelpIntent = "Help";
         public const string NoneIntent = "None";
 
+        private bool IsFirstMessage = true;
+
         /// <summary>
         /// Key in the bot config (.bot file) for the LUIS instance.
         /// In the .bot file, multiple instances of LUIS can be configured.
@@ -124,7 +126,10 @@ namespace Microsoft.BotBuilderSamples
                                 default:
                                     // Help or no intent identified, either way, let's provide some help.
                                     // to the user
-                                    await dc.Context.SendActivityAsync("I didn't understand what you just said to me.");
+                                    var welcomeCard = CreateAdaptiveCardAttachment();
+                                    var response = CreateResponse(activity, welcomeCard);
+                                    await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
+                                    //await dc.Context.SendActivityAsync("I didn't understand what you just said to me.");
                                     break;
                             }
 
@@ -148,20 +153,11 @@ namespace Microsoft.BotBuilderSamples
             {
                 if (activity.MembersAdded.Any())
                 {
-                    await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
-                    // Iterate over all new members added to the conversation.
-                    //foreach (var member in activity.MembersAdded)
-                    //{
-                    //    await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
-                    //    //// Greet anyone that was not the target (recipient) of this message.
-                    //    //// To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
-                    //    //if (member.Id != activity.Recipient.Id)
-                    //    //{
-                    //    //    var welcomeCard = CreateAdaptiveCardAttachment();
-                    //    //    var response = CreateResponse(activity, welcomeCard);
-                    //    //    await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
-                    //    //}
-                    //}
+                    if (IsFirstMessage)
+                    {
+                        await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
+                        IsFirstMessage = false;
+                    }
                 }
             }
 
