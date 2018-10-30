@@ -151,14 +151,15 @@ namespace Microsoft.BotBuilderSamples
                     // Iterate over all new members added to the conversation.
                     foreach (var member in activity.MembersAdded)
                     {
-                        // Greet anyone that was not the target (recipient) of this message.
-                        // To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
-                        if (member.Id != activity.Recipient.Id)
-                        {
-                            var welcomeCard = CreateAdaptiveCardAttachment();
-                            var response = CreateResponse(activity, welcomeCard);
-                            await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
-                        }
+                        await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
+                        //// Greet anyone that was not the target (recipient) of this message.
+                        //// To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
+                        //if (member.Id != activity.Recipient.Id)
+                        //{
+                        //    var welcomeCard = CreateAdaptiveCardAttachment();
+                        //    var response = CreateResponse(activity, welcomeCard);
+                        //    await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
+                        //}
                     }
                 }
             }
