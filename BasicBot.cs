@@ -155,8 +155,8 @@ namespace Microsoft.BotBuilderSamples
                 {
                     if (_isFirstMessage)
                     {
-                        await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
                         _isFirstMessage = false;
+                        await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
                     }
                 }
             }
