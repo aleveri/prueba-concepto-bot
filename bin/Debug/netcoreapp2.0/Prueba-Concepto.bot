@@ -22,9 +22,9 @@
       "id": "2"
     },
     {
-      "appId": "",
-      "appPassword": "",
-      "endpoint": "http://localhost:3978/api/messages",
+      "appId": "4cf4ddd5-fa6c-4e38-a748-de2d6fcf2df7",
+      "appPassword": "G5givpjY1t2w4BX7LX3O8g==!XlT4xY9O/47WlJNb2q2nzY5O0uw8nTK0JpQLorTfsww=",
+      "endpoint": "https://prueba-concepto.azurewebsites.net/api/messages",
       "type": "endpoint",
       "name": "development",
       "id": "3"

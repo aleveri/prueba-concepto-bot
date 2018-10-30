@@ -10,3 +10,15 @@ C:\Users\andresl\Downloads\Prueba-Concepto-src\obj\Debug\netcoreapp2.0\BasicBot.
 C:\Users\andresl\Downloads\Prueba-Concepto-src\obj\Debug\netcoreapp2.0\BasicBot.AssemblyInfo.cs
 C:\Users\andresl\Downloads\Prueba-Concepto-src\obj\Debug\netcoreapp2.0\BasicBot.dll
 C:\Users\andresl\Downloads\Prueba-Concepto-src\obj\Debug\netcoreapp2.0\BasicBot.pdb
+C:\Users\andresl\Downloads\prueba-concepto-bot\bin\Debug\netcoreapp2.0\Prueba-Concepto.bot
+C:\Users\andresl\Downloads\prueba-concepto-bot\bin\Debug\netcoreapp2.0\BasicBot.deps.json
+C:\Users\andresl\Downloads\prueba-concepto-bot\bin\Debug\netcoreapp2.0\BasicBot.runtimeconfig.json
+C:\Users\andresl\Downloads\prueba-concepto-bot\bin\Debug\netcoreapp2.0\BasicBot.runtimeconfig.dev.json
+C:\Users\andresl\Downloads\prueba-concepto-bot\bin\Debug\netcoreapp2.0\BasicBot.dll
+C:\Users\andresl\Downloads\prueba-concepto-bot\bin\Debug\netcoreapp2.0\BasicBot.pdb
+C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.csprojAssemblyReference.cache
+C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.csproj.CoreCompileInputs.cache
+C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.AssemblyInfoInputs.cache
+C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.AssemblyInfo.cs
+C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.dll
+C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.pdb

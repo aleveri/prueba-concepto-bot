@@ -11569,11 +11569,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andresl\\Downloads\\prueba-concepto\\BasicBot.csproj",
+      "projectUniqueName": "C:\\Users\\andresl\\Downloads\\prueba-concepto-bot\\BasicBot.csproj",
       "projectName": "BasicBot",
-      "projectPath": "C:\\Users\\andresl\\Downloads\\prueba-concepto\\BasicBot.csproj",
+      "projectPath": "C:\\Users\\andresl\\Downloads\\prueba-concepto-bot\\BasicBot.csproj",
       "packagesPath": "C:\\Users\\andresl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andresl\\Downloads\\prueba-concepto\\obj\\",
+      "outputPath": "C:\\Users\\andresl\\Downloads\\prueba-concepto-bot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
