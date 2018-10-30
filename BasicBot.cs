@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using BasicBot.Dialogs;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
@@ -27,7 +28,7 @@ namespace Microsoft.BotBuilderSamples
         public const string CancelIntent = "Cancel";
         public const string HelpIntent = "Help";
         public const string NoneIntent = "None";
-        public const string Prueba = "Prueba";
+        public const string PruebaIntent = "Prueba";
 
         /// <summary>
         /// Key in the bot config (.bot file) for the LUIS instance.
@@ -36,6 +37,7 @@ namespace Microsoft.BotBuilderSamples
         public static readonly string LuisConfiguration = "BasicBotLuisApplication";
 
         private readonly IStatePropertyAccessor<GreetingState> _greetingStateAccessor;
+        private readonly IStatePropertyAccessor<PruebaState> _pruebaStateAccessor;
         private readonly IStatePropertyAccessor<DialogState> _dialogStateAccessor;
         private readonly UserState _userState;
         private readonly ConversationState _conversationState;
@@ -53,6 +55,7 @@ namespace Microsoft.BotBuilderSamples
             _conversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
 
             _greetingStateAccessor = _userState.CreateProperty<GreetingState>(nameof(GreetingState));
+            _pruebaStateAccessor = _userState.CreateProperty<PruebaState>(nameof(PruebaState));
             _dialogStateAccessor = _conversationState.CreateProperty<DialogState>(nameof(DialogState));
 
             // Verify LUIS configuration.
@@ -119,6 +122,10 @@ namespace Microsoft.BotBuilderSamples
                             {
                                 case GreetingIntent:
                                     await dc.BeginDialogAsync(nameof(GreetingDialog));
+                                    break;
+
+                                case PruebaIntent:
+                                    await dc.BeginDialogAsync(nameof(PruebaDialog));
                                     break;
 
                                 case NoneIntent:
