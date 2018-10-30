@@ -1,0 +1,23 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "Input.Text",
+      "placeholder": "Token de identificación",
+      "style": "password",
+      "maxLength": 0,
+      "id": "Token"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Validar",
+      "data": {
+        "id": "Token"
+      }
+    }
+  ]
+}
