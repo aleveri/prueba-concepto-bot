@@ -131,9 +131,10 @@ namespace Microsoft.BotBuilderSamples
                                     break;
 
                                 case TransactionIntent:
-                                    var welcomeCard = CreateAdaptiveCardAttachment();
-                                    var response = CreateResponse(activity, welcomeCard);
-                                    await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
+                                    // var welcomeCard = CreateAdaptiveCardAttachment();
+                                    // var response = CreateResponse(activity, welcomeCard);
+                                    // await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
+                                    await dc.Context.SendActivityAsync("Entre en la transaccion");
                                     break;
 
                                 case NoneIntent:
@@ -162,11 +163,6 @@ namespace Microsoft.BotBuilderSamples
             {
                 if (activity.MembersAdded.Any())
                 {
-                    //if (_isFirstMessage)
-                    //{
-                    //    _isFirstMessage = false;
-                    //    await dc.Context.SendActivityAsync("Bienvenido, En que le puedo ayudar ?");
-                    //}
                 }
             }
 
