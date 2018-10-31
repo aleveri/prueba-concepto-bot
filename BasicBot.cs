@@ -131,10 +131,9 @@ namespace Microsoft.BotBuilderSamples
                                     break;
 
                                 case TransactionIntent:
-                                    // var welcomeCard = CreateAdaptiveCardAttachment();
-                                    // var response = CreateResponse(activity, welcomeCard);
-                                    // await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
-                                    await dc.Context.SendActivityAsync("Entre en la transaccion");
+                                    var welcomeCard = CreateAdaptiveCardAttachment();
+                                    var response = CreateResponse(activity, welcomeCard);
+                                    await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
                                     break;
 
                                 case NoneIntent:

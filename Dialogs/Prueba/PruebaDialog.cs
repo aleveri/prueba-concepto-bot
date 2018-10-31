@@ -65,7 +65,9 @@ namespace BasicBot.Dialogs
                 return await stepContext.PromptAsync(SegundoPasoPrompt, opts);
             }
 
-            return await TercerPaso(stepContext);
+            //return await TercerPaso(stepContext);
+
+            return await stepContext.EndDialogAsync();
         }
 
         private async Task<DialogTurnResult> TercerPaso(WaterfallStepContext stepContext)
