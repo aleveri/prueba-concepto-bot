@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System;
-using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
@@ -12,6 +10,8 @@ using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
 
 namespace Microsoft.BotBuilderSamples
 {
@@ -21,7 +21,7 @@ namespace Microsoft.BotBuilderSamples
     public class Startup
     {
         private ILoggerFactory _loggerFactory;
-        private bool _isProduction = false;
+        private readonly bool _isProduction = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Startup"/> class.
@@ -34,7 +34,7 @@ namespace Microsoft.BotBuilderSamples
         {
             _isProduction = env.IsProduction();
 
-            var builder = new ConfigurationBuilder()
+            IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
@@ -57,8 +57,8 @@ namespace Microsoft.BotBuilderSamples
         /// <param name="services">Specifies the contract for a <see cref="IServiceCollection"/> of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var secretKey = Configuration.GetSection("botFileSecret")?.Value;
-            var botFilePath = Configuration.GetSection("botFilePath")?.Value;
+            string secretKey = Configuration.GetSection("botFileSecret")?.Value;
+            string botFilePath = Configuration.GetSection("botFilePath")?.Value;
 
             // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
             BotConfiguration botConfig = null;
@@ -68,7 +68,7 @@ namespace Microsoft.BotBuilderSamples
             }
             catch
             {
-                var msg = @"Error reading bot file. Please ensure you have valid botFilePath and botFileSecret set for your environment.
+                string msg = @"Error reading bot file. Please ensure you have valid botFilePath and botFileSecret set for your environment.
     - You can find the botFilePath and botFileSecret in the Azure App Service application settings.
     - If you are running this bot locally, consider adding a appsettings.json file with botFilePath and botFileSecret.
     - See https://aka.ms/about-bot-file to learn more about .bot file its use and bot configuration.
@@ -83,8 +83,8 @@ namespace Microsoft.BotBuilderSamples
             services.AddSingleton(sp => new BotServices(botConfig));
 
             // Retrieve current endpoint.
-            var environment = _isProduction ? "production" : "development";
-            var service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == environment).FirstOrDefault();
+            string environment = _isProduction ? "production" : "development";
+            ConnectedService service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == environment).FirstOrDefault();
             if (!(service is EndpointService endpointService))
             {
                 throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");
@@ -113,10 +113,10 @@ namespace Microsoft.BotBuilderSamples
             // IStorage dataStore = new Microsoft.Bot.Builder.Azure.AzureBlobStorage(blobStorageConfig.ConnectionString, storageContainer);
 
             // Create and add conversation state.
-            var conversationState = new ConversationState(dataStore);
+            ConversationState conversationState = new ConversationState(dataStore);
             services.AddSingleton(conversationState);
 
-            var userState = new UserState(dataStore);
+            UserState userState = new UserState(dataStore);
             services.AddSingleton(userState);
 
             services.AddBot<BasicBot>(options =>
@@ -129,7 +129,7 @@ namespace Microsoft.BotBuilderSamples
                 options.OnTurnError = async (context, exception) =>
                 {
                     logger.LogError($"Exception caught : {exception}");
-                    await context.SendActivityAsync("Sorry, it looks like something went wrong.");
+                    await context.SendActivityAsync($"Sorry, it looks like something went wrong: {exception}");
                 };
             });
         }
