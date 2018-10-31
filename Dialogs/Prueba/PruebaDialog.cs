@@ -11,7 +11,7 @@ namespace BasicBot.Dialogs
     public class PruebaDialog : ComponentDialog
     {
         private const string ProfileDialog = "profileDialog";
-
+        private const string SegundoPasoPrompt = "promptSegundoPaso";
         private bool flag = false;
 
         public IStatePropertyAccessor<PruebaState> UserProfileAccessor { get; }
@@ -28,6 +28,7 @@ namespace BasicBot.Dialogs
             };
 
             AddDialog(new WaterfallDialog(ProfileDialog, waterfallSteps));
+            AddDialog(new TextPrompt(SegundoPasoPrompt));
         }
 
         private async Task<DialogTurnResult> PrimerPaso(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -63,7 +64,7 @@ namespace BasicBot.Dialogs
                     },
                 };
                 flag = true;
-                return await stepContext.PromptAsync("Prompt Segundo Paso", opts);
+                return await stepContext.PromptAsync(SegundoPasoPrompt, opts);
             }
 
             return await TercerPaso(stepContext);
