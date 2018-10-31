@@ -21,4 +21,3 @@ C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.
 C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.AssemblyInfo.cs
 C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.dll
 C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.pdb
-C:\Users\andresl\Downloads\prueba-concepto-bot\obj\Debug\netcoreapp2.0\BasicBot.csprojAssemblyReference.cache
