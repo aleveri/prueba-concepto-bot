@@ -66,6 +66,7 @@ namespace Microsoft.BotBuilderSamples
 
             Dialogs = new DialogSet(_dialogStateAccessor);
             Dialogs.Add(new GreetingDialog(_greetingStateAccessor, loggerFactory));
+            Dialogs.Add(new PruebaDialog(_pruebaStateAccessor, loggerFactory));
         }
 
         private DialogSet Dialogs { get; set; }
