@@ -29,6 +29,7 @@ namespace Microsoft.BotBuilderSamples
         public const string HelpIntent = "Help";
         public const string NoneIntent = "None";
         public const string PruebaIntent = "Prueba";
+        public const string TransactionIntent = "Transaction";
 
         /// <summary>
         /// Key in the bot config (.bot file) for the LUIS instance.
@@ -127,6 +128,12 @@ namespace Microsoft.BotBuilderSamples
 
                                 case PruebaIntent:
                                     await dc.BeginDialogAsync(nameof(PruebaDialog));
+                                    break;
+
+                                case TransactionIntent:
+                                    var welcomeCard = CreateAdaptiveCardAttachment();
+                                    var response = CreateResponse(activity, welcomeCard);
+                                    await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
                                     break;
 
                                 case NoneIntent:

@@ -10,7 +10,7 @@
       },
     {
       "type": "Input.Text",
-      "placeholder": "Token de identificación",
+      "placeholder": "Token de identificacion",
       "style": "password",
       "maxLength": 0,
       "id": "Token"
