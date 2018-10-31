@@ -131,12 +131,7 @@ namespace Microsoft.BotBuilderSamples
 
                                 case NoneIntent:
                                 default:
-                                    // Help or no intent identified, either way, let's provide some help.
-                                    // to the user
-                                    var welcomeCard = CreateAdaptiveCardAttachment();
-                                    var response = CreateResponse(activity, welcomeCard);
-                                    await dc.Context.SendActivityAsync(response).ConfigureAwait(false);
-                                    // await dc.Context.SendActivityAsync("I didn't understand what you just said to me.");
+                                    await dc.Context.SendActivityAsync("Disculpa, No te entendí lo que me quieres decir");
                                     break;
                             }
 

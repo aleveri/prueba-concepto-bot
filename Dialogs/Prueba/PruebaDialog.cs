@@ -52,7 +52,7 @@ namespace BasicBot.Dialogs
             PruebaState pruebaState = await UserProfileAccessor.GetAsync(stepContext.Context);
 
             // Logica de negocio necesaria en el flujo.
-            if (pruebaState == null)
+            if (pruebaState != null)
             {
                 PromptOptions opts = new PromptOptions
                 {
@@ -72,7 +72,6 @@ namespace BasicBot.Dialogs
         {
             ITurnContext context = stepContext.Context;
             PruebaState pruebaState = await UserProfileAccessor.GetAsync(context);
-
             await context.SendActivityAsync("Prueba Finalizada");
             return await stepContext.EndDialogAsync();
         }
