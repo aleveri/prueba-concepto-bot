@@ -12,7 +12,6 @@ namespace BasicBot.Dialogs
     {
         private const string ProfileDialog = "profileDialog";
         private const string SegundoPasoPrompt = "promptSegundoPaso";
-        private bool flag = false;
 
         public IStatePropertyAccessor<PruebaState> UserProfileAccessor { get; }
 
@@ -50,10 +49,10 @@ namespace BasicBot.Dialogs
 
         private async Task<DialogTurnResult> SegundoPaso(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            PruebaState greetingState = await UserProfileAccessor.GetAsync(stepContext.Context);
+            PruebaState pruebaState = await UserProfileAccessor.GetAsync(stepContext.Context);
 
             // Logica de negocio necesaria en el flujo.
-            if (!flag)
+            if (pruebaState == null)
             {
                 PromptOptions opts = new PromptOptions
                 {
@@ -63,7 +62,6 @@ namespace BasicBot.Dialogs
                         Text = "Hola, en que te puedo ayudar ?",
                     },
                 };
-                flag = true;
                 return await stepContext.PromptAsync(SegundoPasoPrompt, opts);
             }
 
