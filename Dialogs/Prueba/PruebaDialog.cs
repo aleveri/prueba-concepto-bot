@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
+﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BasicBot.Dialogs
 {
@@ -59,22 +59,20 @@ namespace BasicBot.Dialogs
                     Prompt = new Activity
                     {
                         Type = ActivityTypes.Message,
-                        Text = "Hola, en que te puedo ayudar ?",
+                        Text = "Hola",
                     },
                 };
                 return await stepContext.PromptAsync(SegundoPasoPrompt, opts);
             }
 
-            //return await TercerPaso(stepContext);
-
-            return await stepContext.EndDialogAsync();
+            return await TercerPaso(stepContext);
         }
 
         private async Task<DialogTurnResult> TercerPaso(WaterfallStepContext stepContext)
         {
             ITurnContext context = stepContext.Context;
             PruebaState pruebaState = await UserProfileAccessor.GetAsync(context);
-            await context.SendActivityAsync("Prueba Finalizada");
+            await context.SendActivityAsync("¿ En que te puedo ayudar ?");
             return await stepContext.EndDialogAsync();
         }
 
